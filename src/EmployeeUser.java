@@ -8,8 +8,15 @@
  * @author hazem
  */
 public class EmployeeUser {
-    String employeeId;
-    String name;
-    String address;
-    String phoneNumber;
+  private  String employeeId;
+  private  String name;
+  private  String address;
+  private  String phoneNumber;
+
+    public EmployeeUser(String employeeId, String name, String address, String phoneNumber) {
+        this.employeeId = employeeId;
+        this.name = name;
+        this.address = address;
+        this.phoneNumber = phoneNumber;
+    }
 }
