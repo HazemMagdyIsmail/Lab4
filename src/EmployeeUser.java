@@ -7,7 +7,7 @@
  *
  * @author hazem
  */
-public class EmployeeUser {
+public class EmployeeUser extends Record{
   private  String employeeId;
   private  String name;
   private String Email;

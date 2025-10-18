@@ -50,7 +50,7 @@ public abstract class Database {
             }
 
         }
-
+        return false;
     }
     public Record getRecord(String key){
               for (int i = 0; i < recordsArray.size(); i++) {
