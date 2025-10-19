@@ -28,10 +28,10 @@ public class AdminRole  {
         
 }
 
-public EmployeeUser[] getListOfEmployees(){
-EmployeeUser [] U =(EmployeeUser[]) database.returnAllRecords().toArray(); 
-return U;
+public EmployeeUser[] getListOfEmployees() {
+    return database.returnAllRecords().toArray(new EmployeeUser[0]);
 }
+
 public void removeEmployee(String key){
     database.deleteRecord(key);
     
@@ -41,3 +41,8 @@ public void logout() throws FileNotFoundException{
     database.saveToFile();
 }
 }
+
+
+
+
+

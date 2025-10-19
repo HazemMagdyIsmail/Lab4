@@ -52,29 +52,37 @@ public class EmployeeRole {
     }
 
     public double returnProduct(String customerSSN, String productID, LocalDate purchaseDate,
-                                LocalDate returnDate) throws FileNotFoundException {
-        if (returnDate.isBefore(purchaseDate)) return -1;
-        String purchaseKey = customerSSN + "," + productID;
-        ArrayList<Record> all = customerProductDatabase.returnAllRecords();
-        CustomerProduct found = null;
-        for (int i = 0; i < all.size(); i++) {
-            CustomerProduct c = (CustomerProduct) all.get(i);
-            if (c.getSearchKey().equals(purchaseKey)) {
-                found = c;
-                break;
-            }
+                            LocalDate returnDate) throws FileNotFoundException {
+    if (returnDate.isBefore(purchaseDate)) return -1;
+    String purchaseKey = customerSSN + "," + productID;
+    ArrayList<Record> all = customerProductDatabase.returnAllRecords();
+    CustomerProduct found = null;
+    for (int i = 0; i < all.size(); i++) {
+        CustomerProduct c = (CustomerProduct) all.get(i);
+        if (c.getSearchKey().equals(purchaseKey)) {
+            found = c;
+            break;
         }
-        if (found == null) return -1;
-        long days = ChronoUnit.DAYS.between(purchaseDate, returnDate);
-        if (days > 14) return -1;
-        Product p = (Product) productsDatabase.getRecord(productID);
-        if (p == null) return -1;
-        p.setQuantity(p.getQuantity() + 1);
-        customerProductDatabase.deleteRecord(purchaseKey);
-        productsDatabase.saveToFile();
-        customerProductDatabase.saveToFile();
-        return p != null ? p.getQuantity() : 0;
     }
+    if (found == null) return -1;
+    long days = ChronoUnit.DAYS.between(purchaseDate, returnDate);
+    if (days > 14) return -1;
+
+    Product p = (Product) productsDatabase.getRecord(productID);
+    if (p == null) return -1;
+
+  
+    p.setQuantity(p.getQuantity() + 1);
+
+   
+    customerProductDatabase.deleteRecord(purchaseKey);
+    productsDatabase.saveToFile();
+    customerProductDatabase.saveToFile();
+
+   
+    return p.getPrice();
+}
+
 
     public boolean applyPayment(String customerSSN, LocalDate purchaseDate) throws FileNotFoundException {
         ArrayList<Record> all = customerProductDatabase.returnAllRecords();
