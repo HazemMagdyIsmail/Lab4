@@ -13,6 +13,10 @@ import java.io.FileNotFoundException;
 public class AdminRole  {
     private EmployeeUserDatabase database;
 
+    public EmployeeUserDatabase getDatabase() {
+        return database;
+    }
+
     public AdminRole(String filename) throws FileNotFoundException {
         this.database = new EmployeeUserDatabase(filename);
     }
