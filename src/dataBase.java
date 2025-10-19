@@ -69,6 +69,7 @@ public abstract class Database {
             for (int i = 0; i < recordsArray.size(); i++) {
                  if (key.equals(recordsArray.get(i).getSearchKey())) {
                  recordsArray.remove(i);
+                 break;
                  }
                  
                 
