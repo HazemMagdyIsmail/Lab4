@@ -45,7 +45,7 @@ public abstract class Database {
     public boolean contains(String key) {
 
         for (int i = 0; i < recordsArray.size(); i++) {
-            if (key == recordsArray.get(i).getSearchKey()) {
+            if (key.equals(recordsArray.get(i).getSearchKey())) {
                 return true;
             }
 
@@ -54,7 +54,7 @@ public abstract class Database {
     }
     public Record getRecord(String key){
               for (int i = 0; i < recordsArray.size(); i++) {
-            if (key == recordsArray.get(i).getSearchKey()) {
+            if (key.equals(recordsArray.get(i).getSearchKey())) {
                 return recordsArray.get(i);
             }
             
@@ -67,7 +67,7 @@ public abstract class Database {
     } 
         public void deleteRecord(String key) {
             for (int i = 0; i < recordsArray.size(); i++) {
-                 if (key == recordsArray.get(i).getSearchKey()) {
+                 if (key.equals(recordsArray.get(i).getSearchKey())) {
                  recordsArray.remove(i);
                  }
                  

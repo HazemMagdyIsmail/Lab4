@@ -37,10 +37,12 @@ public class EmployeeUser extends Record{
     public String getPhoneNumber() {return phoneNumber;}
     public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber;}
 
+  @Override
     public String lineRepresentation(){
         return String.join(",",employeeId,name,Email,address,phoneNumber);
     }
 
+  @Override
     public String getSearchKey(){
         return employeeId;
     }
