@@ -33,7 +33,7 @@ public class AdminRole  {
 }
 
 public EmployeeUser[] getListOfEmployees() {
-    return database.returnAllRecords().toArray(new EmployeeUser[0]);
+    return  (EmployeeUser[])database.returnAllRecords().toArray(new EmployeeUser[0]);
 }
 
 public void removeEmployee(String key){
