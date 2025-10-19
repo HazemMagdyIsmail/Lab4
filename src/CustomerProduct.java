@@ -36,6 +36,7 @@ public class CustomerProduct extends Record{
         return purchaseDate;
     }
 
+    @Override
     public String lineRepresentation() {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
         String formattedDate = purchaseDate.format(formatter);
@@ -51,6 +52,7 @@ public class CustomerProduct extends Record{
         this.paid = paid;
     }
 
+    @Override
     public String getSearchKey() {
         return customerSSN + "," + productID;
     }
